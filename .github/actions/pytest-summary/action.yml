@@ -1,0 +1,13 @@
+name: 'Pytest JSON Summary'
+description: 'Outputs a collapsible summary of failed tests from pytest.json'
+inputs:
+  report-path:
+    description: 'Path to pytest.json report'
+    required: false
+    default: 'pytest.json'
+runs:
+  using: 'composite'
+  steps:
+    - name: Run pytest summary script
+      run: python "${{ github.action_path }}/main.py" "${{ inputs.report-path }}"
+      shell: bash
