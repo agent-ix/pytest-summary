@@ -57,7 +57,8 @@ jobs:
           pytest --json-report --json-report-file=pytest.json
 
       - name: Summarize pytest failures
-        uses: ./.github/actions/pytest-summary
+        uses: agent-ix/pytest-summary@v1
         with:
           report-path: pytest.json
+
 ```
