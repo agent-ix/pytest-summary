@@ -7,7 +7,9 @@ report_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("pytest.json")
 summary_path = Path(os.environ.get("GITHUB_STEP_SUMMARY", "/dev/null"))
 
 if not report_path.exists():
-    summary_path.write_text(f"❌ Report file not found at {report_path}\n", encoding="utf-8")
+    summary_path.write_text(
+        f"❌ Report file not found at {report_path}\n", encoding="utf-8"
+    )
     sys.exit(1)
 
 with report_path.open() as f:
@@ -15,7 +17,6 @@ with report_path.open() as f:
 
 summary = Path(os.environ.get("GITHUB_STEP_SUMMARY", "/dev/null"))
 with summary.open("a", encoding="utf-8") as out:
-
     failed_tests = [t for t in report.get("tests", []) if t.get("outcome") == "failed"]
     failed_collectors = [
         c for c in report.get("collectors", []) if c.get("outcome") == "failed"
@@ -41,7 +42,9 @@ with summary.open("a", encoding="utf-8") as out:
         for col in failed_collectors:
             nodeid = col.get("nodeid", "unknown")
             longrepr = col.get("longrepr", "").strip()
-            out.write(f"<details>\n<summary><code>{nodeid}</code> (collection failed)</summary>\n\n")
+            out.write(
+                f"<details>\n<summary><code>{nodeid}</code> (collection failed)</summary>\n\n"
+            )
             out.write("```text\n")
             out.write(f"{longrepr}\n")
             out.write("```\n</details>\n\n")
