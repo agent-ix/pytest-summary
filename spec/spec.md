@@ -1,5 +1,5 @@
 ---
-artifact_type: master-requirements
+type: master-requirements
 name: pytest-summary
 org: agent-ix
 component_type: github-actions
