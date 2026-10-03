@@ -1,5 +1,7 @@
 # 🧪 Pytest Summary GitHub Action
 
+[![Discord](https://img.shields.io/badge/Discord-Join%20us-5865F2?logo=discord&logoColor=white)](https://discord.gg/k8DVhuYBR2)
+
 This GitHub Action generates a detailed, collapsible summary of **failed tests** from a [`pytest-json-report`](https://github.com/pytest-dev/pytest-json-report) output file.
 
 ✅ Shows test results directly in the GitHub Actions summary
